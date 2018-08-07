@@ -1,0 +1,9 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName">
+    <aura:attribute name="simulationWeeks" type="List" />
+    <ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.init}" />
+    <aura:handler name="change" value="{!v.simulationWeeks}" action="{!c.handleDataChange}" />
+    <aura:attribute name="chart" type="Object" />
+    <div class="chart-container">
+        <canvas aura:id="chartArea"></canvas>
+    </div>
+</aura:component>

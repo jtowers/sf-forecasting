@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <name>AuraDefinitionBundle</name>
+    <members>ForecastEditor</members>
+    <members>ForecastFrequencyDistribution</members>
+    <members>ForecastResultsTable</members>
+    <members>ForecastSimulationBurndown</members>
+  </types>
+  <types>
+    <name>ApexClass</name>
+    <members>ForecastEditorController</members>
+  </types>
+  <types>
+    <name>FlexiPage</name>
+    <members>Feature_Forecast_Record_Page</members>
+  </types>
+  <types>
+    <name>Layout</name>
+    <members>Actual_Burndown_Week__c-Actual Burndown Week Layout</members>
+    <members>Feature_Forecast__c-Feature Forecast Layout</members>
+    <members>Simulation_Burndown_Week__c-Simulation Burndown Week Layout</members>
+    <members>Simulation_Burndown__c-Simulation Burndown Layout</members>
+    <members>Simulation_Week__c-Simulation Week Layout</members>
+  </types>
+  <types>
+    <name>CustomObject</name>
+    <members>Actual_Burndown_Week__c</members>
+    <members>Feature_Forecast__c</members>
+    <members>Simulation_Burndown_Week__c</members>
+    <members>Simulation_Burndown__c</members>
+    <members>Simulation_Week__c</members>
+  </types>
+  <types>
+    <name>CustomField</name>
+    <members>Actual_Burndown_Week__c.Feature_Forecast__c</members>
+    <members>Actual_Burndown_Week__c.Remaining_Stories__c</members>
+    <members>Actual_Burndown_Week__c.Week__c</members>
+    <members>Feature_Forecast__c.Actual_Completion_Date__c</members>
+    <members>Feature_Forecast__c.Estimated_Start_Date__c</members>
+    <members>Feature_Forecast__c.High_Story_Estimate__c</members>
+    <members>Feature_Forecast__c.Low_Story_Estimate__c</members>
+    <members>Feature_Forecast__c.Number_of_Simulations__c</members>
+    <members>Feature_Forecast__c.Sprint_Days__c</members>
+    <members>Feature_Forecast__c.Sprint_Throughput_High__c</members>
+    <members>Feature_Forecast__c.Sprint_Throughput_Low__c</members>
+    <members>Feature_Forecast__c.Story_Split_High__c</members>
+    <members>Feature_Forecast__c.Story_Split_Low__c</members>
+    <members>Simulation_Burndown_Week__c.Remaining_Stories__c</members>
+    <members>Simulation_Burndown_Week__c.Simulation_Burndown__c</members>
+    <members>Simulation_Burndown_Week__c.Week__c</members>
+    <members>Simulation_Burndown__c.Feature_Forecast__c</members>
+    <members>Simulation_Week__c.Feature_Forecast__c</members>
+    <members>Simulation_Week__c.Frequency__c</members>
+    <members>Simulation_Week__c.Probability__c</members>
+    <members>Simulation_Week__c.Week_Number__c</members>
+    <members>Simulation_Week__c.Week__c</members>
+  </types>
+  <types>
+    <name>CompactLayout</name>
+    <members>Feature_Forecast__c.Compact_Layout</members>
+  </types>
+  <types>
+    <name>PermissionSet</name>
+    <members>Feature_Forecast_Manager</members>
+    <members>Feature_Forecasting_Viewer</members>
+  </types>
+  <types>
+    <name>QuickAction</name>
+    <members>Feature_Forecast__c.Log_Work_for_Week</members>
+  </types>
+  <types>
+    <name>ReportType</name>
+    <members>Feature_Forecasts_with_Simulation_Burndowns_with_Simulation_Burndown_Weeks</members>
+  </types>
+  <types>
+    <name>StaticResource</name>
+    <members>chartjs</members>
+    <members>momentjs</members>
+  </types>
+  <types>
+    <name>CustomTab</name>
+    <members>Feature_Forecast__c</members>
+  </types>
+  <version>43.0</version>
+  <fullName>sf-forecasting</fullName>
+</Package>

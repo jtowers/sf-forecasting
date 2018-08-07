@@ -1,0 +1,11 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome" controller="ForecastEditorController">
+    <ltng:require scripts="{!$Resource.chartjs}" afterScriptsLoaded="{!c.init}" />
+    <aura:handler name="change" value="{!v.simulationBurndowns}" action="{!c.handleDataChange}" />
+    <aura:handler name="change" value="{!v.actualBurndowns}" action="{!c.handleDataChange}" />
+    <aura:attribute name="chart" type="Object" />
+    <aura:attribute name="simulationBurndowns" type="List" />
+    <aura:attribute name="actualBurndowns" type="List" />
+    <div class="chart-container">
+        <canvas aura:id="chartArea"></canvas>
+    </div>
+</aura:component>

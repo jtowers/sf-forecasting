@@ -1,0 +1,9 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome" controller="ForecastEditorController">
+    <aura:attribute name="simulationWeeks" type="Object" />
+    <aura:attribute name="tableColumns" type="List" />
+    <aura:attribute name="sortedBy" type="String" default="Probability__c" />
+    <aura:attribute name="sortedDirection" type="String" default="desc" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <lightning:datatable data="{! v.simulationWeeks }" columns="{! v.tableColumns }" keyField="Week__c" hideCheckboxColumn="true"
+        onsort="{!c.handleSort}" sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortedDirection}" maxColumnWidth="225" />
+</aura:component>
