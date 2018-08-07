@@ -4,6 +4,13 @@ Probabilistic forecasting app for Salesforce based on Troy Magennis's [forecasti
 
 Installing creates a Feature Forecast object and related metadata to generate and store forecasts for project.
 
+## Installation Instructions
+
+<a href="https://githubsfdeploy.herokuapp.com">
+  <img alt="Deploy to Salesforce"
+       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
+
 ## Todo:
 
 - Finish README
