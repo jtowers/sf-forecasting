@@ -1,0 +1,73 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId,force:hasSObjectName" controller="ForecastEditorController">
+    <aura:attribute name="forecastRisks" type="List" />
+    <aura:attribute name="tableColumns" type="List" />
+    <aura:attribute name="sortedBy" type="String" default="Probability__c" />
+    <aura:attribute name="sortedDirection" type="String" default="desc" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <lightning:card title="Risks" class="slds-card__body_inner">
+        <aura:set attribute="actions">
+            <lightning:button label="Add Risk" onclick="{!c.addRisk}" />
+            <lightning:button label="Remove Selected Risks" onclick="{!c.removeRisks}" variant="destructive" />
+        </aura:set>
+        <p class="slds-p-horizontal_small" style="margin-bottom:30px">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Select All">
+                                <lightning:input type="checkbox" aura:id="selectAll" label="Select All" variant="label-hidden" onchange="{!c.selectAll}"
+                                />
+                            </div>
+                        </th>
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Risk Name">Risk Name</div>
+                        </th>
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Probability">Probability</div>
+                        </th>
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Impact Low">Low Impact</div>
+                        </th>
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Impact High">High Impact</div>
+                        </th>
+                        <th class="slds-cell-wrap" scope="col">
+                            <div class="slds-truncate" title="Description">Description</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.forecastRisks}" var="risk" indexVar="i">
+                        <tr>
+                            <td class="slds-cell-wrap" data-label="Select Row">
+                                <lightning:input type="checkbox" aura:id="rowSelection" label="Select Row" variant="label-hidden" value="{!i}" />
+                            </td>
+                            <th class="slds-cell-wrap" scope="row" data-label="Risk Name">
+                                <lightning:input type="text" aura:id="field" required="true" label="Risk Name" variant="label-hidden" value="{!risk.Name}"
+                                />
+                            </th>
+                            <td class="slds-cell-wrap" data-label="Probability">
+                                <lightning:input type="number" min="0" max="100" aura:id="field" required="true" label="Probability" variant="label-hidden"
+                                    value="{!risk.Probability__c}" formatter="percent-fixed" />
+                            </td>
+                            <td class="slds-cell-wrap" data-label="Impact Low">
+                                <lightning:input type="number" min="0" aura:id="field" required="true" label="Impact Low" variant="label-hidden" value="{!risk.Low_Impact__c}"
+                                />
+                            </td>
+                            <td class="slds-cell-wrap" data-label="Impact High">
+                                <lightning:input type="number" min="0" aura:id="field" required="true" label="Impact High" variant="label-hidden" value="{!risk.High_Impact__c}"
+                                />
+                            </td>
+                            <td class="slds-cell-wrap" data-label="Description">
+                                <lightning:input type="text" aura:id="field" label="Description" variant="label-hidden" value="{!risk.Description__c}" />
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </p>
+    </lightning:card>
+
+
+
+</aura:component>

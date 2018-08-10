@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Frequency__c</fullName>
+    <fullName>Description__c</fullName>
     <externalId>false</externalId>
-    <label>Frequency</label>
-    <precision>18</precision>
-    <required>false</required>
-    <scale>0</scale>
+    <label>Description</label>
+    <length>32768</length>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>Number</type>
-    <unique>false</unique>
+    <type>LongTextArea</type>
+    <visibleLines>15</visibleLines>
 </CustomField>

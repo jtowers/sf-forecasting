@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Frequency__c</fullName>
+    <fullName>Low_Impact__c</fullName>
     <externalId>false</externalId>
-    <label>Frequency</label>
+    <inlineHelpText>Minimum number of stories/points that could be added due to this event occurring.</inlineHelpText>
+    <label>Low Impact</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>

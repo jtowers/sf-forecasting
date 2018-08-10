@@ -1,6 +1,10 @@
 public with sharing class ForecastEditorController {
 @AuraEnabled
-public static Map<String, Object> EditForecast(Feature_Forecast__c forecast, List<Simulation_Week__c> simulationWeeks, List<Simulation_Burndown__c> simulationBurns, String simulationBurnWeeks){
+public static Map<String, Object> EditForecast(Feature_Forecast__c forecast,
+                                               List<Simulation_Week__c> simulationWeeks,
+                                               List<Simulation_Burndown__c> simulationBurns,
+                                               String simulationBurnWeeks,
+                                               List<Risk__c> risks){
 	Map<String, Object> results = new Map<String, Object>();
 	upsert forecast;
 	results.put('forecast', forecast);
@@ -12,6 +16,7 @@ public static Map<String, Object> EditForecast(Feature_Forecast__c forecast, Lis
 	results.put('simulationWeeks', simulationWeeks);
 	delete [SELECT Id FROM Simulation_Burndown_Week__c WHERE Simulation_Burndown__r.Feature_Forecast__c = : forecast.Id];
 	delete [SELECT Id FROM Simulation_Burndown__c WHERE Feature_Forecast__c = : forecast.Id];
+	delete [SELECT Id From Risk__c WHERE Feature_Forecast__c = : forecast.Id];
 	System.debug(simulationBurns);
 	for(Simulation_Burndown__c simulationBurn : simulationBurns) {
 		simulationBurn.Feature_Forecast__c = forecast.Id;
@@ -33,6 +38,10 @@ public static Map<String, Object> EditForecast(Feature_Forecast__c forecast, Lis
 
 	}
 	insert burnWeeks;
+	for(Risk__c risk : risks) {
+		risk.Feature_Forecast__c = forecast.Id;
+	}
+	insert risks;
 	return results;
 }
 
@@ -61,6 +70,11 @@ public static List<Simulation_Week__c> GetSimulationWeeks(String recordId){
 @AuraEnabled
 public static List<Actual_Burndown_Week__c> GetActualBurndownWeeks(String recordId){
 	return [SELECT Id, Week__c, Remaining_Stories__c FROM Actual_Burndown_Week__c ORDER BY Week__c];
+}
+
+@AuraEnabled
+public static List<Risk__c> GetRisks(String recordId){
+	return [SELECT Id, Name, Probability__C, Low_Impact__c, High_Impact__c, Description__c, Combined_Impact__c FROM Risk__c WHERE feature_Forecast__c = : recordId ORDER BY Combined_Impact__c desc];
 }
 
 

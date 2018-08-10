@@ -4,8 +4,8 @@
     <externalId>false</externalId>
     <label>Feature Forecast</label>
     <referenceTo>Feature_Forecast__c</referenceTo>
-    <relationshipLabel>Simulation Weeks</relationshipLabel>
-    <relationshipName>Simulation_Weeks</relationshipName>
+    <relationshipLabel>Risks</relationshipLabel>
+    <relationshipName>Risks</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackHistory>false</trackHistory>
@@ -13,5 +13,3 @@
     <type>MasterDetail</type>
     <writeRequiresMasterRead>false</writeRequiresMasterRead>
 </CustomField>
-
-

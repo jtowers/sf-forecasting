@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Frequency__c</fullName>
+    <fullName>High_Impact__c</fullName>
     <externalId>false</externalId>
-    <label>Frequency</label>
+    <inlineHelpText>Maximum number of sprints/points added to the project if this event occurs</inlineHelpText>
+    <label>High Impact</label>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>
