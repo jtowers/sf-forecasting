@@ -26,6 +26,5 @@ If you have a DX dev hub set up you can also clone this repo and use this projec
 - Finish README
   - Finish description
   - Add instructions for use with screenshots
-- Add unit tests
 - Add Lightning tests
 - Add classic support
