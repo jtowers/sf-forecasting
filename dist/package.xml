@@ -5,11 +5,13 @@
     <members>ForecastEditor</members>
     <members>ForecastFrequencyDistribution</members>
     <members>ForecastResultsTable</members>
+    <members>ForecastRisks</members>
     <members>ForecastSimulationBurndown</members>
   </types>
   <types>
     <name>ApexClass</name>
     <members>ForecastEditorController</members>
+    <members>ForecastEditorControllerTests</members>
   </types>
   <types>
     <name>FlexiPage</name>
@@ -19,6 +21,7 @@
     <name>Layout</name>
     <members>Actual_Burndown_Week__c-Actual Burndown Week Layout</members>
     <members>Feature_Forecast__c-Feature Forecast Layout</members>
+    <members>Risk__c-Risk Layout</members>
     <members>Simulation_Burndown_Week__c-Simulation Burndown Week Layout</members>
     <members>Simulation_Burndown__c-Simulation Burndown Layout</members>
     <members>Simulation_Week__c-Simulation Week Layout</members>
@@ -27,6 +30,7 @@
     <name>CustomObject</name>
     <members>Actual_Burndown_Week__c</members>
     <members>Feature_Forecast__c</members>
+    <members>Risk__c</members>
     <members>Simulation_Burndown_Week__c</members>
     <members>Simulation_Burndown__c</members>
     <members>Simulation_Week__c</members>
@@ -46,6 +50,12 @@
     <members>Feature_Forecast__c.Sprint_Throughput_Low__c</members>
     <members>Feature_Forecast__c.Story_Split_High__c</members>
     <members>Feature_Forecast__c.Story_Split_Low__c</members>
+    <members>Risk__c.Combined_Impact__c</members>
+    <members>Risk__c.Description__c</members>
+    <members>Risk__c.Feature_Forecast__c</members>
+    <members>Risk__c.High_Impact__c</members>
+    <members>Risk__c.Low_Impact__c</members>
+    <members>Risk__c.Probability__c</members>
     <members>Simulation_Burndown_Week__c.Remaining_Stories__c</members>
     <members>Simulation_Burndown_Week__c.Simulation_Burndown__c</members>
     <members>Simulation_Burndown_Week__c.Week__c</members>

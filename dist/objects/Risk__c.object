@@ -43,6 +43,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <description>Used to denote risks to a project, probability of the risk occurring, and the impact the occurrence will have</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
@@ -52,21 +53,60 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Simulation Burndown Week</label>
+    <label>Risk</label>
     <nameField>
-        <displayFormat>SBW-{000000}</displayFormat>
-        <label>Simulation Burndown Week Number</label>
+        <label>Risk Name</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Simulation Burndown Weeks</pluralLabel>
+    <pluralLabel>Risks</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
     <fields>
-        <fullName>Remaining_Stories__c</fullName>
+        <fullName>Combined_Impact__c</fullName>
         <externalId>false</externalId>
-        <label>Remaining Stories</label>
+        <formula>Probability__c *  ((High_Impact__c + Low_Impact__c) / 2)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Estimated impact (lower is better). Use to prioritize risk mitigation</inlineHelpText>
+        <label>Combined Impact</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>15</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Feature_Forecast__c</fullName>
+        <externalId>false</externalId>
+        <label>Feature Forecast</label>
+        <referenceTo>Feature_Forecast__c</referenceTo>
+        <relationshipLabel>Risks</relationshipLabel>
+        <relationshipName>Risks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>High_Impact__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Maximum number of sprints/points added to the project if this event occurs</inlineHelpText>
+        <label>High Impact</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -76,26 +116,28 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Simulation_Burndown__c</fullName>
+        <fullName>Low_Impact__c</fullName>
         <externalId>false</externalId>
-        <label>Simulation Burndown</label>
-        <referenceTo>Simulation_Burndown__c</referenceTo>
-        <relationshipLabel>Simulation Burndown Weeks</relationshipLabel>
-        <relationshipName>Simulation_Burndown_Weeks</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <inlineHelpText>Minimum number of stories/points that could be added due to this event occurring.</inlineHelpText>
+        <label>Low Impact</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Week__c</fullName>
+        <fullName>Probability__c</fullName>
         <externalId>false</externalId>
-        <label>Week</label>
+        <inlineHelpText>What is the likelihood that the risk will occur?</inlineHelpText>
+        <label>Probability</label>
+        <precision>18</precision>
         <required>false</required>
+        <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Date</type>
+        <type>Percent</type>
     </fields>
 </CustomObject>

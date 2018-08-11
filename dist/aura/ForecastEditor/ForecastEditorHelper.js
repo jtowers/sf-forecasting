@@ -25,12 +25,13 @@
     }
     this.showSpinner(component);
     var forecast = component.get("v.forecast");
+    var risks = component.get("v.forecastRisks");
     var numSimulations = forecast.Number_of_Simulations__c;
     var weeksToZero = [];
     var trials = {};
     var trialResults = [];
     for (var i = 1; i <= numSimulations; i++) {
-      var trial = this.conductTrial(forecast, i, weeksToZero);
+      var trial = this.conductTrial(forecast, i, weeksToZero, risks);
       trialResults.push(trial);
       var existingTrial = trials[trial.weeksToZero];
       if (typeof existingTrial == "undefined") {
@@ -69,7 +70,7 @@
     this.hideSpinner(component);
     component.set("v.simulationsRun", true);
   },
-  conductTrial: function(forecast, i, weeksToZero) {
+  conductTrial: function(forecast, i, weeksToZero, risks) {
     var startDate = moment(forecast.Estimated_Start_Date__c);
     var storyEstimateLow = parseInt(forecast.Low_Story_Estimate__c);
     var storyEstimateHigh = parseInt(forecast.High_Story_Estimate__c);
@@ -85,6 +86,7 @@
       storyEstimateLow;
     var splitRate = Math.random() * (splitHigh - splitLow) + splitLow;
     trial.totalSize = Math.ceil(storyEstimate + splitRate);
+    trial.totalSize = this.addRiskImpact(risks, trial.totalSize);
     trial.Simulation_Burndown_Weeks__r = [
       {
         Week__c: startDate,
@@ -112,6 +114,27 @@
     trial.weeksToZero = trial.Simulation_Burndown_Weeks__r.length;
     weeksToZero.push(trial.weeksToZero);
     return trial;
+  },
+  addRiskImpact: function(risks, totalSize) {
+    if (!$A.util.isEmpty(risks)) {
+      for (var i = 0; i < risks.length; i++) {
+        var risk = risks[i];
+        if (risk.Probability__c > 1) {
+          risk.Low_Impact__c = parseInt(risk.Low_Impact__c);
+          risk.High_Impact__c = parseInt(risk.High_Impact__c);
+          risk.Probability__c = risk.Probability__c / 100;
+        }
+        var impact = 0;
+        if (Math.random() <= risk.Probability__c) {
+          impact =
+            Math.floor(
+              Math.random() * (risk.High_Impact__c - risk.Low_Impact__c)
+            ) + risk.Low_Impact__c;
+        }
+        totalSize += impact;
+      }
+    }
+    return totalSize;
   },
   percentRank: function(arr, v) {
     if (typeof v !== "number") throw new TypeError("v must be a number");
@@ -187,6 +210,23 @@
     var newForecast = Object.assign(forecast);
     return newForecast;
   },
+  formatRisksForSave: function(component) {
+    var risks = component.get("v.forecastRisks");
+    var formattedRisks = [];
+    for (var i = 0; i < risks.length; i++) {
+      var risk = risks[i];
+      var formattedRisk = {
+        sobjectType: "Risk__c",
+        Probability__c: parseFloat(risk.Probability__c * 100),
+        Low_Impact__c: parseInt(risk.Low_Impact__c),
+        High_Impact__c: parseInt(risk.High_Impact__c),
+        Description__c: risk.Description__c,
+        Name: risk.Name
+      };
+      formattedRisks.push(formattedRisk);
+    }
+    return formattedRisks;
+  },
   saveForecast: function(component) {
     if (!this.forecastIsValid(component)) {
       return;
@@ -200,7 +240,8 @@
       simulationBurns: this.formatSimulationBurndownsForSave(component),
       simulationBurnWeeks: JSON.stringify(
         this.formatSimulationBurndownWeeksForSave(component)
-      )
+      ),
+      risks: this.formatRisksForSave(component)
     });
     helper
       .executeAction(action)

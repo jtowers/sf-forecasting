@@ -8,94 +8,99 @@
   <aura:attribute name="simulationWeeks" type="List" />
   <aura:attribute name="simulationBurndowns" type="List" />
   <aura:attribute name="actualBurndownWeeks" type="List" />
+  <aura:attribute name="forecastRisks" type="List" />
   <lightning:spinner aura:id="spinner" class="slds-hide" />
   <lightning:card footer="" title="Forecast Editor" class="simulation-card">
     <aura:set attribute="actions">
-
     </aura:set>
     <p class="slds-p-horizontal_small">
       <lightning:tabset>
         <lightning:tab label="Forecast">
           <lightning:layout>
-            <lightning:layoutItem size="7">
-              <lightning:card title="Forecast Completion Date">
-                <p class="slds-p-horizontal_small">
-                  <div class="slds-form" role="list">
-                    <div class="slds-grid slds-gutters_small">
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="date" value="{!v.forecast.Estimated_Start_Date__c}" label="Estimated Start Date" required="true"
-                          />
+            <lightning:layoutItem size="8">
+              <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12">
+                  <lightning:card title="Forecast Completion Date" class="slds-card__body_inner">
+                    <p class="slds-p-horizontal_small">
+                      <div class="slds-form" role="list">
+                        <div class="slds-grid slds-gutters_small">
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="date" value="{!v.forecast.Estimated_Start_Date__c}" label="Estimated Start Date" required="true"
+                              />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="slds-grid slds-gutters_small">
+                        <div class="slds-grid slds-gutters_small">
 
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Number_of_Simulations__c}" label="Number of Simulations"
-                            placeholder="Low estimate on the number of stories/points for the feature" required="true" />
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Number_of_Simulations__c}" label="Number of Simulations"
+                                placeholder="Low estimate on the number of stories/points for the feature" required="true"
+                              />
+                            </div>
+                          </div>
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Days__c}" label="Days in Sprint" placeholder="Number of calendar days in each sprint"
+                                required="true" />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Days__c}" label="Days in Sprint" placeholder="Number of calendar days in each sprint"
-                            required="true" />
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="slds-grid slds-gutters_small">
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Low_Story_Estimate__c}" label="Low Story Estimate" placeholder="Low estimate on the number of stories/points for the feature"
-                            required="true" />
+                        <div class="slds-grid slds-gutters_small">
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Low_Story_Estimate__c}" label="Low Story Estimate" placeholder="Low estimate on the number of stories/points for the feature"
+                                required="true" />
+                            </div>
+                          </div>
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.High_Story_Estimate__c}" label="High Story Estimate" placeholder="High estimate on the number of stories/points for the feature"
+                                required="true" />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.High_Story_Estimate__c}" label="High Story Estimate" placeholder="High estimate on the number of stories/points for the feature"
-                            required="true" />
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="slds-grid slds-gutters_small">
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Story_Split_Low__c}" label="Low Story Split" placeholder="Low estimate on growth/splitting of stories"
-                            required="true" />
+                        <div class="slds-grid slds-gutters_small">
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Story_Split_Low__c}" label="Low Story Split" placeholder="Low estimate on growth/splitting of stories"
+                                required="true" />
+                            </div>
+                          </div>
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Story_Split_High__c}" label="High Story Split" placeholder="High estimate on growth/splitting of stories"
+                                required="true" />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Story_Split_High__c}" label="High Story Split" placeholder="High estimate on growth/splitting of stories"
-                            required="true" />
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="slds-grid slds-gutters_small">
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Throughput_Low__c}" label="Low Sprint Throughput"
-                            placeholder="Low estimate on the number of stories/points per sprint" required="true" />
+                        <div class="slds-grid slds-gutters_small">
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Throughput_Low__c}" label="Low Sprint Throughput"
+                                placeholder="Low estimate on the number of stories/points per sprint" required="true" />
+                            </div>
+                          </div>
+                          <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                            <div class="slds-form-element slds-form-element_edit slds-hint-parent">
+                              <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Throughput_High__c}" label="High Sprint Throughput"
+                                placeholder="High estimate on the number of stories/points per sprint" required="true" />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="slds-col slds-has-flexi-truncate" role="listitem">
-                        <div class="slds-form-element slds-form-element_edit slds-hint-parent">
-                          <lightning:input aura:id="field" type="number" value="{!v.forecast.Sprint_Throughput_High__c}" label="High Sprint Throughput"
-                            placeholder="High estimate on the number of stories/points per sprint" required="true" />
-                        </div>
-                      </div>
-                    </div>
 
-                  </div>
-                </p>
-              </lightning:card>
+                      </div>
+                    </p>
+                  </lightning:card>
+                </lightning:layoutItem>
+              </lightning:layout>
             </lightning:layoutItem>
-            <lightning:layoutItem size="5">
-              <lightning:card title="Results">
+            <lightning:layoutItem size="4">
+              <lightning:card title="Results" class="slds-card__body_inner">
                 <p class="slds-p-horizontal_small">
                   <c:ForecastResultsTable simulationWeeks="{!v.simulationWeeks}" />
                 </p>
@@ -103,13 +108,11 @@
 
             </lightning:layoutItem>
           </lightning:layout>
-
-
-
-
-
         </lightning:tab>
-        <lightning:tab label="Charts" title="2nd tab extended title">
+        <lightning:tab label="Risks">
+          <c:ForecastRisks recordId="{!v.recordId}" forecastRisks="{!v.forecastRisks}" />
+        </lightning:tab>
+        <lightning:tab label="Charts">
           <c:ForecastSimulationBurndown simulationBurndowns="{!v.simulationBurndowns}" actualBurndowns="{!v.actualBurndownWeeks}" recordId="{!v.recordId}"
           />
           <c:ForecastFrequencyDistribution simulationWeeks="{!v.simulationWeeks}" recordId="{!v.recordId}" />

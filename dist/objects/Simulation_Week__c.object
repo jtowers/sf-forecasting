@@ -61,7 +61,7 @@
     </nameField>
     <pluralLabel>Simulation Weeks</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
     <fields>
         <fullName>Feature_Forecast__c</fullName>
@@ -82,7 +82,7 @@
         <externalId>false</externalId>
         <label>Frequency</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -95,7 +95,7 @@
         <inlineHelpText>Probability that all stories will be completed by this week</inlineHelpText>
         <label>Probability</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -107,7 +107,7 @@
         <inlineHelpText>Number of sprints since start date</inlineHelpText>
         <label>Sprint Number</label>
         <precision>18</precision>
-        <required>true</required>
+        <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -118,7 +118,7 @@
         <fullName>Week__c</fullName>
         <externalId>false</externalId>
         <label>Week</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>

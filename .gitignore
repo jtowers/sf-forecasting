@@ -1,3 +1,5 @@
 .vscode
 .sfdx
 /*.code-workspace
+lib/apexdoc.jar
+lib/createDocs.bat
