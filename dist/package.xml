@@ -41,6 +41,9 @@
     <members>Actual_Burndown_Week__c.Remaining_Stories__c</members>
     <members>Actual_Burndown_Week__c.Week__c</members>
     <members>Feature_Forecast__c.Actual_Completion_Date__c</members>
+    <members>Feature_Forecast__c.Actual_High_Throughput__c</members>
+    <members>Feature_Forecast__c.Actual_Low_Throughput__c</members>
+    <members>Feature_Forecast__c.Actual_Starting_Number_of_Stories__c</members>
     <members>Feature_Forecast__c.Estimated_Start_Date__c</members>
     <members>Feature_Forecast__c.High_Story_Estimate__c</members>
     <members>Feature_Forecast__c.Low_Story_Estimate__c</members>
@@ -60,6 +63,7 @@
     <members>Simulation_Burndown_Week__c.Simulation_Burndown__c</members>
     <members>Simulation_Burndown_Week__c.Week__c</members>
     <members>Simulation_Burndown__c.Feature_Forecast__c</members>
+    <members>Simulation_Week__c.Feature_Completed_Before_Week__c</members>
     <members>Simulation_Week__c.Feature_Forecast__c</members>
     <members>Simulation_Week__c.Frequency__c</members>
     <members>Simulation_Week__c.Probability__c</members>
@@ -78,6 +82,7 @@
   <types>
     <name>QuickAction</name>
     <members>Feature_Forecast__c.Log_Work_for_Week</members>
+    <members>Feature_Forecast__c.Record_Actual_Values</members>
   </types>
   <types>
     <name>ReportType</name>
