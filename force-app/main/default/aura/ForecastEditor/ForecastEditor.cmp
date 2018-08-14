@@ -4,7 +4,7 @@
   <aura:attribute name="recordError" type="String" />
   <aura:attribute name="simulationsRun" type="Boolean" default="false" />
   <force:recordData aura:id="recordLoader" recordId="{!v.recordId}" targetFields="{!v.forecast}" targetError="{!v.recordError}"
-    recordUpdated="{!c.handleRecordUpdated}" layoutType="FULL" />
+    recordUpdated="{!c.handleRecordUpdated}" layoutType="FULL" mode="EDIT" />
   <aura:attribute name="simulationWeeks" type="List" />
   <aura:attribute name="simulationBurndowns" type="List" />
   <aura:attribute name="actualBurndownWeeks" type="List" />
