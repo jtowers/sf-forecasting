@@ -132,7 +132,7 @@
         <excludeButtons>New</excludeButtons>
         <fields>Week__c</fields>
         <fields>Probability__c</fields>
-        <fields>Feature_Completed_Before_Date__c</fields>
+        <fields>Feature_Completed_Before_Week__c</fields>
         <relatedList>Simulation_Week__c.Feature_Forecast__c</relatedList>
         <sortField>Probability__c</sortField>
         <sortOrder>Desc</sortOrder>
