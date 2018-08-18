@@ -5,6 +5,7 @@
     if ($A.util.isEmpty(recordId)) {
       helper.loadNewRecord(component);
     }
+    helper.getImportPlugins(component);
   },
   handleRecordUpdated: function(component, event, helper) {
     console.log("record loaded");
@@ -41,6 +42,38 @@
         scope: "Feature_Forecast__c"
       });
       homeEvent.fire();
+    }
+  },
+  handlePluginChange: function(component, event, helper) {
+    var selected = event.getParam("value");
+    component.set("v.selectedPlugin", selected);
+  },
+  importData: function(component, event, helper) {
+    helper.importData(component);
+  },
+  cancelImport: function(component, event, helper) {
+    helper.hideModal(component);
+  },
+  doImport: function(component, event, helper) {
+    console.log("starting import");
+    component.get("v.body")[0].doImport();
+  },
+  handleImportComplete: function(component, event, helper) {
+    console.log("import complete");
+    var success = event.getParam("success");
+    if (success) {
+      var updatedForecastValues = event.getParam("updatedForecastValues");
+      if (!$A.util.isEmpty(updatedForecastValues)) {
+        var forecast = component.get("v.forecast");
+        forecast = Object.assign(forecast, updatedForecastValues);
+        component.set("v.forecast", forecast);
+      }
+      helper.hideModal(component);
+      component.find("notifLib").showToast({
+        variant: "success",
+        title: "Success",
+        message: "Your import was completed successfully"
+      });
     }
   }
 });

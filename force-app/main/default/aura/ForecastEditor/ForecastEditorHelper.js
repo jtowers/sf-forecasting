@@ -1,4 +1,72 @@
 ({
+  getImportPlugins: function(component) {
+    var importPluginAction = component.get("c.GetImportPlugins");
+    this.executeAction(importPluginAction).then(
+      $A.getCallback(function(plugins) {
+        var pluginsList = [];
+        for (var i = 0; i < plugins.length; i++) {
+          var plugin = {
+            label: plugins[i].MasterLabel,
+            value: plugins[i].Component_API_Name__c
+          };
+          pluginsList.push(plugin);
+        }
+        component.set("v.importPlugins", pluginsList);
+      })
+    );
+  },
+  importData: function(component) {
+    var helper = this;
+    $A.createComponent(
+      component.get("v.selectedPlugin"),
+      {
+        recordId: component.get("v.recordId")
+      },
+      function(newCmp, status, error) {
+        if (component.isValid()) {
+          if (status === "SUCCESS") {
+            if (!newCmp.isInstanceOf("c:IForecastEditorImportPlugin")) {
+              component.find("notifLib").showNotice({
+                variant: "error",
+                header: "Error",
+                message:
+                  "There was a problem loading the selected plugin. Please make sure it is installed properly or choose a different plugin to use.",
+                closeCallback: function() {}
+              });
+              return;
+            }
+            console.log("component is loaded");
+            var body = [newCmp];
+            component.set("v.body", body);
+
+            if (newCmp.get("v.autoStartImport")) {
+              component.set("v.autoStartImport", true);
+              helper.showModal(component);
+              newCmp.doImport();
+            } else {
+              component.set("v.autoStartImport", false);
+              helper.showModal(component);
+            }
+          } else {
+            console.log(error);
+            component.find("notifLib").showNotice({
+              variant: "error",
+              header: "Error",
+              message:
+                "There was a problem loading the selected plugin. Please make sure it is installed properly or choose a different plugin to use.",
+              closeCallback: function() {}
+            });
+          }
+        }
+      }
+    );
+  },
+  showModal: function(component) {
+    $A.util.removeClass(component.find("modal-container"), "slds-hide");
+  },
+  hideModal: function(component) {
+    $A.util.addClass(component.find("modal-container"), "slds-hide");
+  },
   loadNewRecord: function(component) {
     component.find("recordLoader").getNewRecord(
       "Feature_Forecast__c",

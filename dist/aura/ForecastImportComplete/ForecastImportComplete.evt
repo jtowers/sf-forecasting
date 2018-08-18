@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Used to notify ForecastEdtor when an import is complete">
+    <aura:attribute name="updatedForecastValues" type="Map" />
+    <aura:attribute name="success" type="Boolean" required="true" />
+</aura:event>

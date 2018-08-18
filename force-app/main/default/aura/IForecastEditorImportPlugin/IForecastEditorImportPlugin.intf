@@ -1,0 +1,10 @@
+<aura:interface description="Interface template">
+    <aura:attribute name="recordId" type="String" default="" description="Record Id for the forecast being edited. Blank if it is a new record."
+    />
+    <aura:attribute name="autoStartImport" type="Boolean" default="false" description="Set to true if import should automatically start instead of promptingg the user."
+    />
+    <aura:method name="doImport" />
+
+    <aura:registerEvent name="onImportComplete" type="c:ForecastImportComplete" description="The event fired when the import is complete"
+    />
+</aura:interface>
