@@ -4,14 +4,20 @@
     <name>AuraDefinitionBundle</name>
     <members>ForecastEditor</members>
     <members>ForecastFrequencyDistribution</members>
+    <members>ForecastImportComplete</members>
     <members>ForecastResultsTable</members>
     <members>ForecastRisks</members>
     <members>ForecastSimulationBurndown</members>
+    <members>IForecastEditorImportPlugin</members>
   </types>
   <types>
     <name>ApexClass</name>
     <members>ForecastEditorController</members>
     <members>ForecastEditorControllerTests</members>
+  </types>
+  <types>
+    <name>CustomMetadata</name>
+    <members>ForecastEditorImportPlugin.Test_Plugin</members>
   </types>
   <types>
     <name>FlexiPage</name>
@@ -21,6 +27,8 @@
     <name>Layout</name>
     <members>Actual_Burndown_Week__c-Actual Burndown Week Layout</members>
     <members>Feature_Forecast__c-Feature Forecast Layout</members>
+    <members>ForecastEditorImportPlugin__mdt-Forecast Editor Import Plugin Layout</members>
+    <members>ForecastEditorImportPlugin__mdt-ForecastEditorImportPlugin Layout</members>
     <members>Risk__c-Risk Layout</members>
     <members>Simulation_Burndown_Week__c-Simulation Burndown Week Layout</members>
     <members>Simulation_Burndown__c-Simulation Burndown Layout</members>
@@ -30,6 +38,7 @@
     <name>CustomObject</name>
     <members>Actual_Burndown_Week__c</members>
     <members>Feature_Forecast__c</members>
+    <members>ForecastEditorImportPlugin__mdt</members>
     <members>Risk__c</members>
     <members>Simulation_Burndown_Week__c</members>
     <members>Simulation_Burndown__c</members>
@@ -41,6 +50,9 @@
     <members>Actual_Burndown_Week__c.Remaining_Stories__c</members>
     <members>Actual_Burndown_Week__c.Week__c</members>
     <members>Feature_Forecast__c.Actual_Completion_Date__c</members>
+    <members>Feature_Forecast__c.Actual_High_Throughput__c</members>
+    <members>Feature_Forecast__c.Actual_Low_Throughput__c</members>
+    <members>Feature_Forecast__c.Actual_Starting_Number_of_Stories__c</members>
     <members>Feature_Forecast__c.Estimated_Start_Date__c</members>
     <members>Feature_Forecast__c.High_Story_Estimate__c</members>
     <members>Feature_Forecast__c.Low_Story_Estimate__c</members>
@@ -50,6 +62,8 @@
     <members>Feature_Forecast__c.Sprint_Throughput_Low__c</members>
     <members>Feature_Forecast__c.Story_Split_High__c</members>
     <members>Feature_Forecast__c.Story_Split_Low__c</members>
+    <members>ForecastEditorImportPlugin__mdt.Active__c</members>
+    <members>ForecastEditorImportPlugin__mdt.Component_API_Name__c</members>
     <members>Risk__c.Combined_Impact__c</members>
     <members>Risk__c.Description__c</members>
     <members>Risk__c.Feature_Forecast__c</members>
@@ -60,6 +74,7 @@
     <members>Simulation_Burndown_Week__c.Simulation_Burndown__c</members>
     <members>Simulation_Burndown_Week__c.Week__c</members>
     <members>Simulation_Burndown__c.Feature_Forecast__c</members>
+    <members>Simulation_Week__c.Feature_Completed_Before_Week__c</members>
     <members>Simulation_Week__c.Feature_Forecast__c</members>
     <members>Simulation_Week__c.Frequency__c</members>
     <members>Simulation_Week__c.Probability__c</members>
@@ -78,6 +93,7 @@
   <types>
     <name>QuickAction</name>
     <members>Feature_Forecast__c.Log_Work_for_Week</members>
+    <members>Feature_Forecast__c.Record_Actual_Values</members>
   </types>
   <types>
     <name>ReportType</name>

@@ -1,8 +1,13 @@
 <aura:component implements="lightning:actionOverride,force:hasRecordId,force:hasSObjectName" controller="ForecastEditorController">
   <ltng:require scripts="{!$Resource.momentjs}" afterScriptsLoaded="{!c.init}" />
+  <aura:handler name="onImportComplete" event="c:ForecastImportComplete" action="{!c.handleImportComplete}" />
+  <lightning:notificationsLibrary aura:id="notifLib" />
   <aura:attribute name="forecast" type="Object" />
   <aura:attribute name="recordError" type="String" />
   <aura:attribute name="simulationsRun" type="Boolean" default="false" />
+  <aura:attribute name="importPlugins" type="List" />
+  <aura:attribute name="selectedPlugin" type="String" />
+  <aura:attribute name="autoStartImport" type="Boolean" default="false" />
   <force:recordData aura:id="recordLoader" recordId="{!v.recordId}" targetFields="{!v.forecast}" targetError="{!v.recordError}"
     recordUpdated="{!c.handleRecordUpdated}" layoutType="FULL" mode="EDIT" />
   <aura:attribute name="simulationWeeks" type="List" />
@@ -12,6 +17,18 @@
   <lightning:spinner aura:id="spinner" class="slds-hide" />
   <lightning:card footer="" title="Forecast Editor" class="simulation-card">
     <aura:set attribute="actions">
+      <aura:if isTrue="{!v.importPlugins.length > 0}">
+        <lightning:layout multiplerows="true">
+          <lightning:layoutItem size="6">
+            <lightning:combobox name="progress" label="Import Plugin" value="{!v.selectedPlugin}" placeholder="Select Plugin" options="{! v.importPlugins }"
+              onchange="{!c.handlePluginChange}" variant="label-hidden" />
+          </lightning:layoutItem>
+          <lightning:layoutItem size="6">
+            <lightning:button label="Import Data" onclick="{!c.importData}" disabled="{!v.selectedPlugin == null}" />
+          </lightning:layoutItem>
+        </lightning:layout>
+      </aura:if>
+
     </aura:set>
     <p class="slds-p-horizontal_small">
       <lightning:tabset>
@@ -21,6 +38,7 @@
               <lightning:layout multipleRows="true">
                 <lightning:layoutItem size="12">
                   <lightning:card title="Forecast Completion Date" class="slds-card__body_inner">
+
                     <p class="slds-p-horizontal_small">
                       <div class="slds-form" role="list">
                         <div class="slds-grid slds-gutters_small">
@@ -131,6 +149,30 @@
       </div>
     </p>
   </lightning:card>
+  <div class="slds-hide" aura:id="modal-container">
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="{!c.cancelImport}">
+            <lightning:icon iconName="utility:close" />
 
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Import Data</h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          {!v.body}
+        </div>
+        <aura:if isTrue="{!v.autoStartImport == false}">
+          <footer class="slds-modal__footer slds-modal__footer_directional">
+            <lightning:button onclick="{!c.cancelImport}" label="Cancel" />
+            <lightning:button variant="brand" onclick="{!c.doImport}" label="Import" />
+          </footer>
+        </aura:if>
 
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
 </aura:component>

@@ -149,6 +149,15 @@ public static List<Risk__c> GetRisks(String recordId){
 	return [SELECT Id, Name, Probability__C, Low_Impact__c, High_Impact__c, Description__c, Combined_Impact__c FROM Risk__c WHERE feature_Forecast__c = : recordId ORDER BY Combined_Impact__c desc];
 }
 
+@AuraEnabled
+/**
+ * Retrieves import plugins for editor
+ * @return   returns list of editor plugins
+ */
+public static List<ForecastEditorImportPlugin__mdt> GetImportPlugins(){
+	return [SELECT Id, MasterLabel, Component_API_Name__c FROM ForecastEditorImportPlugin__mdt WHERE Active__c = true];
+}
+
 
 
 }

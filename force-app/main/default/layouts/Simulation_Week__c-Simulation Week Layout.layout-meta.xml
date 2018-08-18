@@ -24,6 +24,10 @@
                 <behavior>Readonly</behavior>
                 <field>Probability__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Feature_Completed_Before_Week__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

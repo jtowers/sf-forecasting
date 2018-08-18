@@ -84,6 +84,45 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>Actual_High_Throughput__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Highest sprint throughput for this feature</inlineHelpText>
+        <label>Actual HighThroughput</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Actual_Low_Throughput__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Lowest actual sprint throughput for the feature</inlineHelpText>
+        <label>Actual Low Throughput</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Actual_Starting_Number_of_Stories__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The actual number of stories at the beginning of the sprint</inlineHelpText>
+        <label>Actual Starting Number of Stories</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Estimated_Start_Date__c</fullName>
         <externalId>false</externalId>
         <label>Estimated Start Date</label>

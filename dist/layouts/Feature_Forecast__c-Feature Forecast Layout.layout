@@ -31,6 +31,18 @@
                 <behavior>Readonly</behavior>
                 <field>Number_of_Simulations__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Actual_Starting_Number_of_Stories__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Actual_Low_Throughput__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Actual_High_Throughput__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -93,25 +105,34 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
+            <actionName>Feature_Forecast__c.Record_Actual_Values</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
+            <sortOrder>3</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <quickActionList>
         <quickActionListItems>
             <quickActionName>Feature_Forecast__c.Log_Work_for_Week</quickActionName>
         </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>Feature_Forecast__c.Record_Actual_Values</quickActionName>
+        </quickActionListItems>
     </quickActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>Week__c</fields>
         <fields>Probability__c</fields>
+        <fields>Feature_Completed_Before_Week__c</fields>
         <relatedList>Simulation_Week__c.Feature_Forecast__c</relatedList>
         <sortField>Probability__c</sortField>
         <sortOrder>Desc</sortOrder>

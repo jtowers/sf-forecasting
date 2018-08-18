@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Feature_Completed_Before_Week__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(Feature_Forecast__r.Actual_Completion_Date__c), false,  Feature_Forecast__r.Actual_Completion_Date__c &lt;=  Week__c )</formula>
+    <inlineHelpText>Determines whether the actual completion date of the feature was on or before this week</inlineHelpText>
+    <label>Feature Completed Before Week</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
